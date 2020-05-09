@@ -33,6 +33,10 @@ jobs:
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }} 
       
+      #SCA   
+       - name: Snyk
+         uses: snyk/actions@0.1.1
+      
       # Run dotnet build and publish
       - name: dotnet build and publish
         run: |
@@ -46,8 +50,7 @@ jobs:
           app-name: ${{ env.AZURE_WEBAPP_NAME }} # Replace with your app name
           publish-profile: ${{ secrets.publish_profile }} # Define secret variable in repository settings as per action documentation
           package: '${{ env.AZURE_WEBAPP_PACKAGE_PATH }}/myapp'
-          
-       - name: Snyk
-         uses: snyk/actions@0.1.1
+       
+       
 
 # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
