@@ -34,8 +34,10 @@ jobs:
           dotnet-version: ${{ env.DOTNET_VERSION }} 
       
       #SCA   
-       - name: Snyk
-         uses: snyk/actions@0.1.1
+      - name: Snyk
+        uses: snyk/actions@0.1.1
+        env:
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
       
       # Run dotnet build and publish
       - name: dotnet build and publish
